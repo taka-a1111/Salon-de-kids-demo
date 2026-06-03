@@ -123,6 +123,17 @@
       <div class="box" style="flex:1;min-width:220px">団体の理念・紹介テキスト（数行）<br><span class="muted">NPO法人 Salon de kid's ネット について</span><br><br><span class="btnph">団体概要を見る ▶</span></div>
     </div>
 
+    <h2 class="sec" style="margin-top:26px">紹介動画</h2>
+    <div class="ph" style="height:200px;margin-top:8px">動画（団体・活動紹介）<br><span class="muted">※先方ご用意の動画を掲載予定（YouTube等の埋め込み想定）</span></div>
+    <div class="note">依頼の「ご用意いただくもの：動画」に対応。素材が無ければ省略も可。</div>
+
+    <h2 class="sec" style="margin-top:26px">保護者の声</h2>
+    <div class="note">依頼の用途「掲示板・口コミ」のライト版。まずは体験談カードで設置。投稿型の本格的な掲示板が必要かは要相談。</div>
+    <div class="grid2" style="margin-top:8px">
+      <div class="box"><div class="row" style="align-items:center"><div class="ph" style="width:44px;height:44px;border-radius:50%;flex:none">顔</div><div><strong style="font-size:13px">保護者 A さん</strong><br><span class="muted" style="font-size:12px">利用事業</span></div></div><p class="muted" style="font-size:13px;margin-top:8px">体験談コメント……</p></div>
+      <div class="box"><div class="row" style="align-items:center"><div class="ph" style="width:44px;height:44px;border-radius:50%;flex:none">顔</div><div><strong style="font-size:13px">保護者 B さん</strong><br><span class="muted" style="font-size:12px">利用事業</span></div></div><p class="muted" style="font-size:13px;margin-top:8px">体験談コメント……</p></div>
+    </div>
+
     <h2 class="sec" style="margin-top:26px">応援バナー</h2>
     <div class="ph" style="height:90px;margin-top:8px">寄付・賛助会員・協賛への誘導バナー → 寄付ページへ</div>
 
@@ -281,6 +292,33 @@
     </div>
   </section>
 
+  <!-- ===== 8. 利用規約 ===== -->
+  <section class="page" id="page-terms">
+    <span class="lbl">PAGE 8 / 利用規約（フッターリンク）</span>
+    <div class="pagehead"><div class="crumb">ホーム › 利用規約</div><h2 class="sec" style="border:none;font-size:22px">利用規約</h2>
+      <div class="note">依頼の必要ページ「利用規約」に対応。条文は原稿待ち（一般的なひな型ベースで用意可）。</div>
+    </div>
+    <div class="box">
+      <h2 class="sec" style="font-size:16px">第1条（適用）</h2><p class="muted" style="font-size:13px;margin:6px 0 14px">本規約は……（原稿）</p>
+      <h2 class="sec" style="font-size:16px">第2条（禁止事項）</h2><p class="muted" style="font-size:13px;margin:6px 0 14px">……（原稿）</p>
+      <h2 class="sec" style="font-size:16px">第3条（決済・キャンセル）</h2><p class="muted" style="font-size:13px;margin:6px 0 14px">寄付・賛助会員（Stripe）に関する取り扱い……（原稿）</p>
+      <h2 class="sec" style="font-size:16px">第4条（免責）</h2><p class="muted" style="font-size:13px;margin:6px 0">……（原稿）</p>
+    </div>
+  </section>
+
+  <!-- ===== 9. プライバシーポリシー ===== -->
+  <section class="page" id="page-privacy">
+    <span class="lbl">PAGE 9 / プライバシーポリシー（フッターリンク）</span>
+    <div class="pagehead"><div class="crumb">ホーム › プライバシーポリシー</div><h2 class="sec" style="border:none;font-size:22px">プライバシーポリシー</h2>
+      <div class="note">決済・お問い合わせフォームがあるため実質必須。ひな型ベースで用意可。</div>
+    </div>
+    <div class="box">
+      <h2 class="sec" style="font-size:16px">個人情報の取得・利用目的</h2><p class="muted" style="font-size:13px;margin:6px 0 14px">お問い合わせ・予約・寄付の手続きのため……（原稿）</p>
+      <h2 class="sec" style="font-size:16px">第三者提供・決済について</h2><p class="muted" style="font-size:13px;margin:6px 0 14px">Stripe等の決済事業者への提供……（原稿）</p>
+      <h2 class="sec" style="font-size:16px">開示・お問い合わせ窓口</h2><p class="muted" style="font-size:13px;margin:6px 0">……（原稿）</p>
+    </div>
+  </section>
+
   <!-- ===== FOOTER（全ページ共通） ===== -->
   <footer>
     <div class="row">
@@ -288,20 +326,25 @@
       <div>事業案内 / お知らせ / 予約方法<br>よくある質問 / 寄付 / 団体概要</div>
       <div>Instagram ・ LINE<br><span style="color:#888">SNSアイコン</span></div>
     </div>
-    <div style="margin-top:16px;color:#888">© Salon de kid's ネット</div>
+    <div style="margin-top:16px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="#" class="flink" data-goto="terms" style="color:#cfcfcf">利用規約</a>
+      <a href="#" class="flink" data-goto="privacy" style="color:#cfcfcf">プライバシーポリシー</a>
+    </div>
+    <div style="margin-top:12px;color:#888">© Salon de kid's ネット</div>
   </footer>
 </div>
 
 <script>
   const btns=document.querySelectorAll('#nav button');
   const pages=document.querySelectorAll('.page');
-  btns.forEach(b=>b.addEventListener('click',()=>{
-    btns.forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    pages.forEach(p=>p.classList.remove('active'));
-    document.getElementById('page-'+b.dataset.p).classList.add('active');
+  function goTo(p){
+    btns.forEach(x=>x.classList.toggle('active', x.dataset.p===p));
+    pages.forEach(pg=>pg.classList.remove('active'));
+    const el=document.getElementById('page-'+p); if(el) el.classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
-  }));
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>goTo(b.dataset.p)));
+  document.querySelectorAll('[data-goto]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.dataset.goto);}));
 </script>
 </body>
 </html>
