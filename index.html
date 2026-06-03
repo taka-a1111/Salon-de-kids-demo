@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon de kid's ワイヤーフレーム（低fi）</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:#333;background:#e9e9ec;line-height:1.6;overflow-x:hidden}
+  .wrap{max-width:1000px;margin:0 auto;background:#fff;min-height:100vh;box-shadow:0 0 30px rgba(0,0,0,.08)}
+
+  /* wireframe primitives */
+  .ph{background:repeating-linear-gradient(45deg,#ededed,#ededed 10px,#e4e4e4 10px,#e4e4e4 20px);border:1px solid #cfcfcf;display:flex;align-items:center;justify-content:center;color:#9a9a9a;font-size:13px;text-align:center;padding:10px}
+  .box{border:1px solid #cfcfcf;background:#fafafa;padding:14px}
+  .lbl{display:inline-block;font-size:11px;color:#888;border:1px solid #ddd;border-radius:3px;padding:1px 7px;margin-bottom:8px;background:#f7f7f7}
+  .note{display:block;font-size:12px;color:#2f6db0;background:#eef4fb;border-left:3px solid #2f6db0;padding:6px 10px;margin:8px 0;border-radius:0 4px 4px 0}
+  h2.sec{font-size:20px;margin:6px 0 4px;color:#444;border-bottom:2px solid #333;display:inline-block;padding-bottom:2px}
+  .muted{color:#999}
+  .row{display:flex;gap:14px;flex-wrap:wrap}
+  .btnph{border:1.5px solid #555;border-radius:6px;padding:9px 18px;text-align:center;font-size:14px;color:#444;background:#f4f4f4;display:inline-block}
+  .btnph.dark{background:#444;color:#fff}
+
+  /* header */
+  header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid #333;padding:10px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{width:120px;height:38px;flex:none}
+  nav{display:flex;gap:4px;flex-wrap:wrap;flex:1}
+  nav button{font:inherit;font-size:13px;border:1px solid #cfcfcf;background:#f6f6f6;color:#444;padding:6px 10px;border-radius:5px;cursor:pointer}
+  nav button.active{background:#333;color:#fff;border-color:#333}
+  .search{width:34px;height:34px;flex:none}
+  .wfbadge{position:fixed;top:10px;right:10px;z-index:50;background:#333;color:#fff;font-size:11px;letter-spacing:1px;padding:4px 10px;border-radius:20px}
+
+  /* pages */
+  .page{display:none;padding:22px 22px 60px}
+  .page.active{display:block}
+  .pagehead{background:#f0f0f0;border:1px solid #d5d5d5;padding:18px;margin-bottom:18px;border-radius:4px}
+  .crumb{font-size:12px;color:#999;margin-bottom:6px}
+
+  /* grids */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .card{border:1px solid #cfcfcf;border-radius:6px;overflow:hidden;background:#fff}
+  .card .ph{height:90px;border:none;border-bottom:1px solid #e0e0e0}
+  .card .cbody{padding:10px}
+  .card h4{font-size:14px;margin-bottom:6px}
+  .card p{font-size:12px;color:#888}
+
+  /* table */
+  table.svc{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  table.svc th,table.svc td{border:1px solid #d5d5d5;padding:8px 10px;text-align:left;vertical-align:top}
+  table.svc th{background:#f0f0f0;width:96px;color:#555;white-space:nowrap}
+
+  /* faq / form */
+  .faq{border:1px solid #d5d5d5;border-radius:5px;margin-bottom:8px;background:#fff}
+  .faq summary{cursor:pointer;padding:12px 14px;font-size:14px;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"Q ";color:#888;font-weight:700}
+  .faq .ans{padding:0 14px 14px;font-size:13px;color:#777}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:13px;margin-bottom:4px;color:#555}
+  .inp{border:1px solid #cfcfcf;background:#fcfcfc;height:34px;border-radius:4px}
+  .inp.area{height:90px}
+
+  footer{background:#333;color:#cfcfcf;padding:26px 22px;font-size:12px}
+  footer .row{justify-content:space-between}
+
+  @media(max-width:768px){
+    .grid4{grid-template-columns:repeat(2,1fr)}
+    .grid2{grid-template-columns:1fr}
+    nav{order:3;width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="wfbadge">WIREFRAME ・ 低fi</div>
+<div class="wrap">
+
+  <!-- ===== HEADER（全ページ共通・固定） ===== -->
+  <header>
+    <div class="logo ph">ロゴ</div>
+    <nav id="nav">
+      <button data-p="top" class="active">TOP</button>
+      <button data-p="svc">事業案内</button>
+      <button data-p="news">お知らせ</button>
+      <button data-p="book">予約方法</button>
+      <button data-p="faq">よくある質問</button>
+      <button data-p="donate">寄付・賛助会員・協賛</button>
+      <button data-p="about">団体概要・アクセス</button>
+    </nav>
+    <div class="search ph" title="サイト内検索">🔍</div>
+  </header>
+
+  <!-- ===== 1. TOP ===== -->
+  <section class="page active" id="page-top">
+    <span class="lbl">PAGE 1 / TOP</span>
+    <div class="ph" style="height:300px">ヒーロー（座談会写真）＋ キャッチコピー ＋ CTAボタン
+      <br><span class="muted">例：「奈良・天理の子育てを、みんなで。」</span></div>
+    <div class="note">ファーストビュー。既存の座談会写真を加工して使用。下に主要CTA（事業を見る／予約）。</div>
+
+    <h2 class="sec">7つの事業</h2>
+    <div class="note">4列グリッドで簡潔に一覧。各カード「詳しくみる」→ 事業案内ページの該当セクションへ。</div>
+    <div class="grid4" style="margin-top:10px">
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>子育てサロン</h4><p>未就学児と保護者</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>一時預かり</h4><p>1歳〜未就学児</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>モヤモヤ相談</h4><p>子育て中のすべての方</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>出張リズム広場</h4><p>乳幼児の親子</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>ベビーサロン</h4><p>妊娠中〜生後12ヶ月</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>年齢別育児教室</h4><p>0〜3歳（3クラス）</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card"><div class="ph">アイコン/写真</div><div class="cbody"><h4>子育てサポートクラブ</h4><p>支援に関わる方</p><span class="btnph" style="font-size:12px;padding:5px 10px">詳しくみる</span></div></div>
+      <div class="card" style="display:flex;align-items:center;justify-content:center"><span class="btnph dark">事業案内ページへ ▶</span></div>
+    </div>
+
+    <h2 class="sec" style="margin-top:26px">お知らせ</h2>
+    <div class="box" style="margin-top:8px">
+      <div style="border-bottom:1px dashed #ddd;padding:8px 0;font-size:13px"><span class="muted">2026.0X.XX</span> ・ <span class="lbl" style="margin:0">お知らせ</span> 見出しテキスト……</div>
+      <div style="border-bottom:1px dashed #ddd;padding:8px 0;font-size:13px"><span class="muted">2026.0X.XX</span> ・ <span class="lbl" style="margin:0">イベント</span> 見出しテキスト……</div>
+      <div style="padding:8px 0;font-size:13px"><span class="muted">2026.0X.XX</span> ・ <span class="lbl" style="margin:0">休業</span> 見出しテキスト……</div>
+      <div style="text-align:center;margin-top:10px"><span class="btnph">お知らせ一覧を詳しく見る ▶</span></div>
+    </div>
+
+    <h2 class="sec" style="margin-top:26px">団体紹介</h2>
+    <div class="row" style="margin-top:8px">
+      <div class="ph" style="width:160px;height:140px;flex:none">既存キャラクター</div>
+      <div class="box" style="flex:1;min-width:220px">団体の理念・紹介テキスト（数行）<br><span class="muted">NPO法人 Salon de kid's ネット について</span><br><br><span class="btnph">団体概要を見る ▶</span></div>
+    </div>
+
+    <h2 class="sec" style="margin-top:26px">応援バナー</h2>
+    <div class="ph" style="height:90px;margin-top:8px">寄付・賛助会員・協賛への誘導バナー → 寄付ページへ</div>
+
+    <h2 class="sec" style="margin-top:26px">サイト内検索</h2>
+    <div class="row" style="margin-top:8px;align-items:center"><div class="inp" style="flex:1;min-width:200px"></div><span class="btnph dark">検索</span></div>
+    <div class="note">サイト内検索はヘッダーのアイコンとここの2か所からアクセス可。</div>
+  </section>
+
+  <!-- ===== 2. 事業案内 ===== -->
+  <section class="page" id="page-svc">
+    <span class="lbl">PAGE 2 / 事業案内（7事業を1ページに集約）</span>
+    <div class="pagehead"><div class="crumb">ホーム › 事業案内</div><h2 class="sec" style="border:none;font-size:22px">事業案内</h2>
+      <div class="note">ページ内アンカーで各事業へ。各事業は「対象／利用日時／予約／料金／利用方法」のカード型表で統一。</div>
+      <div class="row" style="margin-top:6px">
+        <span class="btnph" style="font-size:12px">01 子育てサロン</span><span class="btnph" style="font-size:12px">02 一時預かり</span>
+        <span class="btnph" style="font-size:12px">03 モヤモヤ相談</span><span class="btnph" style="font-size:12px">04 出張リズム広場</span>
+        <span class="btnph" style="font-size:12px">05 ベビーサロン</span><span class="btnph" style="font-size:12px">06 年齢別育児教室</span>
+        <span class="btnph" style="font-size:12px">07 子育てサポートクラブ</span>
+      </div>
+    </div>
+
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">01</span><h2 class="sec" style="font-size:18px">子育てサロン</h2>
+      <table class="svc"><tr><th>対象</th><td>未就学のお子さんと保護者</td></tr><tr><th>利用日時</th><td>（テキスト原稿）</td></tr><tr><th>予約</th><td>（要/不要・方法）</td></tr><tr><th>料金</th><td>（テキスト原稿）</td></tr><tr><th>利用方法</th><td>（テキスト原稿）</td></tr></table>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">02</span><h2 class="sec" style="font-size:18px">一時預かり</h2>
+      <table class="svc"><tr><th>対象</th><td>1歳〜未就学児（0歳児は要相談）</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">03</span><h2 class="sec" style="font-size:18px">モヤモヤ相談</h2>
+      <table class="svc"><tr><th>対象</th><td>子育て中のすべての方</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+      <div class="note">相談シーンのイラスト（受領済み）をここの挿絵に活用予定。</div>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">04</span><h2 class="sec" style="font-size:18px">出張リズム広場</h2>
+      <table class="svc"><tr><th>対象</th><td>乳幼児の親子</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">05</span><h2 class="sec" style="font-size:18px">ベビーサロン</h2>
+      <table class="svc"><tr><th>対象</th><td>妊娠中〜生後12ヶ月までの親子</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <span class="lbl">06</span><h2 class="sec" style="font-size:18px">年齢別育児教室</h2>
+      <table class="svc"><tr><th>対象</th><td>0〜3歳（こりす・こじか・きりんの3クラス）</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+    </div>
+    <div class="box">
+      <span class="lbl">07</span><h2 class="sec" style="font-size:18px">子育てサポートクラブ</h2>
+      <table class="svc"><tr><th>対象</th><td>子育て支援に関わるすべての方</td></tr><tr><th>利用日時</th><td>（原稿）</td></tr><tr><th>予約</th><td>（原稿）</td></tr><tr><th>料金</th><td>（原稿）</td></tr><tr><th>利用方法</th><td>（原稿）</td></tr></table>
+    </div>
+  </section>
+
+  <!-- ===== 3. お知らせ ===== -->
+  <section class="page" id="page-news">
+    <span class="lbl">PAGE 3 / お知らせ</span>
+    <div class="pagehead"><div class="crumb">ホーム › お知らせ</div><h2 class="sec" style="border:none;font-size:22px">お知らせ</h2>
+      <div class="note">一覧（新しい順）。各記事は詳細ページ（news-1.html…）へ。カテゴリで絞り込み可にしても良い。</div>
+    </div>
+    <div class="row" style="margin-bottom:12px"><span class="btnph" style="font-size:12px">すべて</span><span class="btnph" style="font-size:12px">お知らせ</span><span class="btnph" style="font-size:12px">イベント</span><span class="btnph" style="font-size:12px">休業</span></div>
+    <div class="box">
+      <div style="border-bottom:1px dashed #ddd;padding:12px 0;font-size:13px"><span class="muted">2026.0X.XX</span> <span class="lbl" style="margin:0">カテゴリ</span><br>記事タイトル……（クリックで詳細へ）</div>
+      <div style="border-bottom:1px dashed #ddd;padding:12px 0;font-size:13px"><span class="muted">2026.0X.XX</span> <span class="lbl" style="margin:0">カテゴリ</span><br>記事タイトル……</div>
+      <div style="border-bottom:1px dashed #ddd;padding:12px 0;font-size:13px"><span class="muted">2026.0X.XX</span> <span class="lbl" style="margin:0">カテゴリ</span><br>記事タイトル……</div>
+      <div style="padding:12px 0;font-size:13px"><span class="muted">2026.0X.XX</span> <span class="lbl" style="margin:0">カテゴリ</span><br>記事タイトル……</div>
+    </div>
+    <div class="row" style="justify-content:center;margin-top:14px"><span class="btnph">‹ 前</span><span class="btnph">1</span><span class="btnph">2</span><span class="btnph">次 ›</span></div>
+  </section>
+
+  <!-- ===== 4. 予約方法 ===== -->
+  <section class="page" id="page-book">
+    <span class="lbl">PAGE 4 / 予約方法（新設）</span>
+    <div class="pagehead"><div class="crumb">ホーム › 予約方法</div><h2 class="sec" style="border:none;font-size:22px">予約方法</h2>
+      <div class="note">外部予約サイトへの動線がメイン。ページ下部に簡易お問い合わせフォームを設置。</div>
+    </div>
+    <div class="box" style="margin-bottom:16px">
+      <h2 class="sec" style="font-size:17px">ご予約の流れ</h2>
+      <div class="row" style="margin-top:10px">
+        <div class="ph" style="flex:1;min-width:120px;height:70px">① 事業を選ぶ</div>
+        <div class="ph" style="flex:1;min-width:120px;height:70px">② 予約サイトへ</div>
+        <div class="ph" style="flex:1;min-width:120px;height:70px">③ 日時を予約</div>
+        <div class="ph" style="flex:1;min-width:120px;height:70px">④ ご来館</div>
+      </div>
+    </div>
+    <div class="grid2" style="margin-bottom:16px">
+      <div class="box" style="text-align:center"><h4>外部予約サイト A</h4><p class="muted" style="font-size:12px;margin:6px 0">（対象事業の説明）</p><span class="btnph dark">予約サイトを開く ▶</span></div>
+      <div class="box" style="text-align:center"><h4>外部予約サイト B</h4><p class="muted" style="font-size:12px;margin:6px 0">（対象事業の説明）</p><span class="btnph dark">予約サイトを開く ▶</span></div>
+    </div>
+    <div class="box">
+      <h2 class="sec" style="font-size:17px">簡易お問い合わせ</h2>
+      <div class="note">予約サイトで完結しない相談用。最小限の項目。</div>
+      <div class="field"><label>お名前</label><div class="inp"></div></div>
+      <div class="field"><label>メール / 電話</label><div class="inp"></div></div>
+      <div class="field"><label>お問い合わせ内容</label><div class="inp area"></div></div>
+      <span class="btnph dark">送信</span>
+    </div>
+  </section>
+
+  <!-- ===== 5. よくある質問 ===== -->
+  <section class="page" id="page-faq">
+    <span class="lbl">PAGE 5 / よくある質問（お問い合わせフォーム統合）</span>
+    <div class="pagehead"><div class="crumb">ホーム › よくある質問</div><h2 class="sec" style="border:none;font-size:22px">よくある質問</h2>
+      <div class="note">単独の「お問い合わせ」ページは廃止し、フォームをこのページ下部に統合。</div>
+    </div>
+    <details class="faq"><summary>質問テキスト……？</summary><div class="ans">A. 回答テキスト……</div></details>
+    <details class="faq"><summary>質問テキスト……？</summary><div class="ans">A. 回答テキスト……</div></details>
+    <details class="faq"><summary>質問テキスト……？</summary><div class="ans">A. 回答テキスト……</div></details>
+    <details class="faq"><summary>質問テキスト……？</summary><div class="ans">A. 回答テキスト……</div></details>
+    <div class="box" style="margin-top:18px">
+      <h2 class="sec" style="font-size:17px">お問い合わせ</h2>
+      <div class="note">FAQで解決しない場合の問い合わせ口。予約方法ページの簡易フォームと同型でOK。</div>
+      <div class="field"><label>お名前</label><div class="inp"></div></div>
+      <div class="field"><label>メール</label><div class="inp"></div></div>
+      <div class="field"><label>電話番号（任意）</label><div class="inp"></div></div>
+      <div class="field"><label>お問い合わせ内容</label><div class="inp area"></div></div>
+      <span class="btnph dark">送信</span>
+    </div>
+  </section>
+
+  <!-- ===== 6. 寄付・賛助会員・協賛 ===== -->
+  <section class="page" id="page-donate">
+    <span class="lbl">PAGE 6 / 寄付・賛助会員・協賛（Stripe決済）</span>
+    <div class="pagehead"><div class="crumb">ホーム › 寄付・賛助会員・協賛</div><h2 class="sec" style="border:none;font-size:22px">寄付・賛助会員・協賛</h2>
+      <div class="note">Stripe決済。「月額賛助会員（サブスク）」と「都度の協賛金・寄付」の2種類。</div>
+    </div>
+    <div class="ph" style="height:80px;margin-bottom:16px">活動への想い・寄付の使い道（リード文＋写真）</div>
+    <div class="grid2">
+      <div class="box">
+        <span class="lbl">サブスク</span><h2 class="sec" style="font-size:17px">月額賛助会員</h2>
+        <p class="muted" style="font-size:13px;margin:6px 0">毎月の継続支援。会員特典の説明……</p>
+        <div class="row"><span class="btnph">月額 ¥A</span><span class="btnph">月額 ¥B</span><span class="btnph">月額 ¥C</span></div>
+        <div style="margin-top:10px"><span class="btnph dark">Stripeで申し込む ▶</span></div>
+        <div class="note">金額設定はクライアント確定待ち。</div>
+      </div>
+      <div class="box">
+        <span class="lbl">都度</span><h2 class="sec" style="font-size:17px">協賛金・寄付</h2>
+        <p class="muted" style="font-size:13px;margin:6px 0">1回ごとの寄付・協賛。金額選択＋自由入力。</p>
+        <div class="row"><span class="btnph">¥1,000</span><span class="btnph">¥3,000</span><span class="btnph">¥5,000</span><span class="btnph">自由入力</span></div>
+        <div style="margin-top:10px"><span class="btnph dark">Stripeで寄付する ▶</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 7. 団体概要・アクセス ===== -->
+  <section class="page" id="page-about">
+    <span class="lbl">PAGE 7 / 団体概要・アクセス</span>
+    <div class="pagehead"><div class="crumb">ホーム › 団体概要・アクセス</div><h2 class="sec" style="border:none;font-size:22px">団体概要・アクセス</h2></div>
+    <div class="box" style="margin-bottom:16px">
+      <h2 class="sec" style="font-size:17px">団体概要</h2>
+      <table class="svc"><tr><th>名称</th><td>NPO法人 Salon de kid's ネット</td></tr><tr><th>所在地</th><td>奈良県天理市……（原稿）</td></tr><tr><th>代表</th><td>（原稿）</td></tr><tr><th>設立</th><td>（原稿）</td></tr><tr><th>事業内容</th><td>子育て支援事業 ほか</td></tr><tr><th>連絡先</th><td>TEL／メール（原稿）</td></tr></table>
+      <div class="note">沿革・正確な情報はクライアント確定待ち。</div>
+    </div>
+    <div class="box">
+      <h2 class="sec" style="font-size:17px">アクセス</h2>
+      <div class="ph" style="height:200px;margin-top:8px">地図（Googleマップ埋め込み）</div>
+      <div class="row" style="margin-top:10px"><div class="ph" style="width:140px;height:90px;flex:none">外観写真</div><div class="box" style="flex:1;min-width:200px">住所・最寄り・駐車場などのテキスト（原稿）</div></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER（全ページ共通） ===== -->
+  <footer>
+    <div class="row">
+      <div>Salon de kid's<br><span style="color:#888">NPO法人 Salon de kid's ネット</span></div>
+      <div>事業案内 / お知らせ / 予約方法<br>よくある質問 / 寄付 / 団体概要</div>
+      <div>Instagram ・ LINE<br><span style="color:#888">SNSアイコン</span></div>
+    </div>
+    <div style="margin-top:16px;color:#888">© Salon de kid's ネット</div>
+  </footer>
+</div>
+
+<script>
+  const btns=document.querySelectorAll('#nav button');
+  const pages=document.querySelectorAll('.page');
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    pages.forEach(p=>p.classList.remove('active'));
+    document.getElementById('page-'+b.dataset.p).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
+</script>
+</body>
+</html>
